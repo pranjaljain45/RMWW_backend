@@ -21,6 +21,8 @@ connectDB();
 // Middleware
 app.use(cors({
   origin: 'https://rmww-frontend.onrender.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 
