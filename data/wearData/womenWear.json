@@ -1314,5 +1314,83 @@
     "size": "L",
     "ownerName": "Aanya Sharma",
     " availableDays": 7
+  },
+  {
+    "name": "Sage Green Embroidered Evening Gown",
+    "price": 3200,
+    "category": "occassion",
+    "subcategory": "cocktail",
+    "imageUrl": "women/occassions/cocktail/c2.jpeg",
+    "description": "Elegant sage green tulle gown with floral embroidery, featuring a plunging neckline and flowing silhouette.",
+    "stylistNotes": "Add crystal studs and a delicate bracelet to keep it minimal and classy.",
+    "materialCare": "Dry clean only. Keep away from sharp jewelry to protect embroidery.",
+    "size": "L",
+    "ownerName": "Meenal Arora",
+    "availableDays": 4
+  },
+  {
+    "name": "Wine Red One-Shoulder Bodycon Gown",
+    "price": 2600,
+    "category": "occassion",
+    "subcategory": "cocktail",
+    "imageUrl": "women/occassions/cocktail/c1.jpeg",
+    "description": "Sophisticated one-shoulder wine red gown with a structured fit and side slit for a bold evening look.",
+    "stylistNotes": "Match with silver heels and a bold lip for a powerful appearance.",
+    "materialCare": "Steam from inside. Spot clean recommended.",
+    "size": "M",
+    "ownerName": "Sanjana Rathi",
+    "availableDays": 2
+  },
+  {
+    "name": "Blush Pink Off-Shoulder Slit Gown",
+    "price": 3100,
+    "category": "occassion",
+    "subcategory": "cocktail",
+    "imageUrl": "women/occassions/cocktail/c3.jpeg",
+    "description": "Graceful blush pink gown with an off-shoulder neckline and thigh-high slit for a modern, elegant statement.",
+    "stylistNotes": "Wear with glitter heels and a diamond bracelet for red-carpet glamour.",
+    "materialCare": "Dry clean and iron on low heat inside out.",
+    "size": "L",
+    "ownerName": "Avni Sharma",
+    "availableDays": 4
+  },
+  {
+    "name": "Mauve Floral Printed Midi Dress",
+    "price": 2400,
+    "category": "occassion",
+    "subcategory": "cocktail",
+    "imageUrl": "women/occassions/cocktail/c4.jpeg",
+    "description": "A sleeveless mauve organza midi dress with delicate floral prints, ideal for garden parties or day wedding events.",
+    "stylistNotes": "Style with nude pumps and a floral clutch for a fresh, elegant look.",
+    "materialCare": "Steam lightly. Hand wash in cold water or dry clean.",
+    "size": "S",
+    "ownerName": "Ritika Mehta",
+    "availableDays": 3
+  },
+  {
+    "name": "Embroidered Wine Fit-and-Flare Midi Dress",
+    "price": 2900,
+    "category": "occassion",
+    "subcategory": "cocktail",
+    "imageUrl": "women/occassions/cocktail/c5.jpeg",
+    "description": "A rich wine-colored midi gown with floral embroidery and a voluminous flare, ideal for engagement or reception looks.",
+    "stylistNotes": "Pair with strappy heels and subtle accessories for a royal vibe.",
+    "materialCare": "Hang vertically to preserve flare. Dry clean only.",
+    "size": "M",
+    "ownerName": "Rhea Kapoor",
+    "availableDays": 6
+  },
+  {
+    "name": "Ivory Floral High-Low Bridal Gown",
+    "price": 3800,
+    "category": "occassion",
+    "subcategory": "cocktail",
+    "imageUrl": "women/occassions/cocktail/c6.jpeg",
+    "description": "A high-low ivory  gown adorned with 3D floral appliqués, perfect for a romantic and whimsical wedding look.",
+    "stylistNotes": "Pair with pearl drop earrings and soft waves for a fairy-tale vibe.",
+    "materialCare": "Dry clean only. Store in a garment bag to avoid crushing the floral detailing.",
+    "size": "M",
+    "ownerName": "Aarohi Gupta",
+    "availableDays": 5
   }
 ]
