@@ -700,20 +700,6 @@
     "availableDays": 7
   },
   {
-    "name": "Regal Ruby & Emerald Set",
-    "price": 1499,
-    "gender": "women",
-    "category": "accessories",
-    "subcategory": "necklaces",
-    "imageUrl": "women/accessories/necklaces/n1.jpeg",
-    "description": "An ornate gold-toned necklace set featuring intricate ruby and emerald stonework with hanging pearls, perfect for traditional occasions.",
-    "stylistNotes": "Pair with deep-toned sarees or lehengas for a royal look.",
-    "materialCare": "Store in a dry place. Avoid water, perfumes, and excessive heat.",
-    "size": "Free Size",
-    "ownerName": "Shrishti Kapoor",
-    "availableDays": 4
-  },
-  {
     "name": "Kundan Dome Jhumka Set",
     "price": 1699,
     "gender": "women",
@@ -1316,19 +1302,6 @@
     " availableDays": 7
   },
   {
-    "name": "Sage Green Embroidered Evening Gown",
-    "price": 3200,
-    "category": "occassion",
-    "subcategory": "cocktail",
-    "imageUrl": "women/occassions/cocktail/c2.jpeg",
-    "description": "Elegant sage green tulle gown with floral embroidery, featuring a plunging neckline and flowing silhouette.",
-    "stylistNotes": "Add crystal studs and a delicate bracelet to keep it minimal and classy.",
-    "materialCare": "Dry clean only. Keep away from sharp jewelry to protect embroidery.",
-    "size": "L",
-    "ownerName": "Meenal Arora",
-    "availableDays": 4
-  },
-  {
     "name": "Wine Red One-Shoulder Bodycon Gown",
     "price": 2600,
     "category": "occassion",
@@ -1340,6 +1313,19 @@
     "size": "M",
     "ownerName": "Sanjana Rathi",
     "availableDays": 2
+  },
+  {
+    "name": "Embroidered Wine Fit-and-Flare Midi Dress",
+    "price": 2900,
+    "category": "occassion",
+    "subcategory": "cocktail",
+    "imageUrl": "women/occassions/cocktail/c5.jpeg",
+    "description": "A rich wine-colored midi gown with floral embroidery and a voluminous flare, ideal for engagement or reception looks.",
+    "stylistNotes": "Pair with strappy heels and subtle accessories for a royal vibe.",
+    "materialCare": "Hang vertically to preserve flare. Dry clean only.",
+    "size": "M",
+    "ownerName": "Rhea Kapoor",
+    "availableDays": 6
   },
   {
     "name": "Blush Pink Off-Shoulder Slit Gown",
@@ -1368,17 +1354,17 @@
     "availableDays": 3
   },
   {
-    "name": "Embroidered Wine Fit-and-Flare Midi Dress",
-    "price": 2900,
+    "name": "Sage Green Embroidered Evening Gown",
+    "price": 3200,
     "category": "occassion",
     "subcategory": "cocktail",
-    "imageUrl": "women/occassions/cocktail/c5.jpeg",
-    "description": "A rich wine-colored midi gown with floral embroidery and a voluminous flare, ideal for engagement or reception looks.",
-    "stylistNotes": "Pair with strappy heels and subtle accessories for a royal vibe.",
-    "materialCare": "Hang vertically to preserve flare. Dry clean only.",
-    "size": "M",
-    "ownerName": "Rhea Kapoor",
-    "availableDays": 6
+    "imageUrl": "women/occassions/cocktail/c2.jpeg",
+    "description": "Elegant sage green tulle gown with floral embroidery, featuring a plunging neckline and flowing silhouette.",
+    "stylistNotes": "Add crystal studs and a delicate bracelet to keep it minimal and classy.",
+    "materialCare": "Dry clean only. Keep away from sharp jewelry to protect embroidery.",
+    "size": "L",
+    "ownerName": "Meenal Arora",
+    "availableDays": 4
   },
   {
     "name": "Ivory Floral High-Low Bridal Gown",
