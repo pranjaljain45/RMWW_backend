@@ -324,7 +324,7 @@
     {
         "name": "Coral Paisley Heritage Kurta",
         "price": 1200,
-        "gender": "men",
+        "gender": "men",  
         "category": "dresses",
         "subcategory": "kurtaPajamas",
         "imageUrl": "men/clothing/kurtaPajamas/mi1.jpeg",
