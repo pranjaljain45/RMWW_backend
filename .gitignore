@@ -1,0 +1,41 @@
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build output
+dist/
+dist-ssr/
+
+# Dependency folders
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Firebase or other secrets (important!)
+config/serviceAccountKey.json
+
+# OS + Editor settings
+.DS_Store
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Optional: lock files (optional to include or exclude)
+# package-lock.json
+# yarn.lock
+c o n f i g / s e r v i c e A c c o u n t K e y . j s o n 
+ 
+ 
