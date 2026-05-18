@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
   // Firebase UID to identify user
-  uid: { type: String, required: true },
+  uid: { type: String, required: true, index: true },
+  
+  // User email for verification
+  email: { type: String, required: true, index: true },
 
   //order id
   orderId: { type: String },
@@ -22,6 +25,9 @@ const orderSchema = new mongoose.Schema({
       size: { type: String, required: true },
       rentalStartDate: Date,
       rentalEndDate: Date,
+      rentalDuration: { type: Number, default: 2 },
+      pickupDate: Date,
+      expectedDeliveryDate: Date
     }
   ],
 
@@ -44,9 +50,6 @@ const orderSchema = new mongoose.Schema({
   payment: {
     method: { type: String, enum: ['razorpay', 'cod'], default: 'cod' },
     status: { type: String, enum: ['pending', 'paid', 'failed'], default: 'pending' },
-    razorpayPaymentId: String,
-    razorpayOrderId: String,
-    razorpaySignature: String
   },
 
 
@@ -64,4 +67,6 @@ const orderSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
-module.exports = mongoose.models.Order || mongoose.model('Order', orderSchema);
+const Order = mongoose.model('Order', orderSchema);
+
+module.exports = Order;

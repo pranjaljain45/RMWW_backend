@@ -22,8 +22,8 @@ router.get("/orders", authenticateToken, async (req, res) => {
 router.post("/address", authenticateToken, async (req, res) => {
   const uid = req.user.uid;
   const {
-    addressLine1, addressLine2, city, state, zip, country,
-    name, email, mobile, pinCode
+    addressLine1, addressLine2, city, state, country, pinCode,
+    name, email, mobile
   } = req.body;
 
   try {
@@ -38,11 +38,11 @@ router.post("/address", authenticateToken, async (req, res) => {
           addressLine2,
           city,
           state,
-          country,
+          country: country || 'India',
           pinCode
         },
       },
-      { new: true }
+      { new: true, upsert: false }
     );
 
     if (!user) return res.status(404).json({ message: "User not found" });

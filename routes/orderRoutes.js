@@ -2,14 +2,15 @@ const express = require("express");
 const router = express.Router();
 const Order = require("../models/Order");
 const User = require("../models/User");
-const Product = require("../models/Product");
-
+const Booking = require("../models/Booking");
+const { checkAvailability } = require("../controllers/bookingController");
 
 // PLACE ORDER
 router.post("/place-order", async (req, res) => {
     try {
         const {
             uid,
+            email,
             items,
             totalAmount,
             address,
@@ -17,52 +18,103 @@ router.post("/place-order", async (req, res) => {
             paymentMethod
         } = req.body;
 
-        //console.log("Received product IDs:", items.map(i => i.productId));
+        // Validate required fields
+        if (!uid || !email || !items || !Array.isArray(items) || items.length === 0) {
+            console.error("Validation failed: Missing required fields");
+            return res.status(400).json({
+                message: "Missing required fields: uid, email, or items"
+            });
+        }
 
-        //  Validate each product from MongoDB instead of JSON
-        for (const item of items) {
-            const product = await Product.findById(item.productId);
+        // Check availability for all items BEFORE creating order
+        const availabilityResults = await Promise.all(
+            items.map(item => 
+                checkAvailability(
+                    item.productId,
+                    item.size,
+                    item.rentalStartDate,
+                    item.rentalEndDate
+                )
+            )
+        );
 
-            if (!product) {
-                return res.status(404).json({
-                    message: `Product not found: ${item.name}`
-                });
-            }
+        const allAvailable = availabilityResults.every(result => result.available);
+        
+        if (!allAvailable) {
+            const unavailableItems = availabilityResults
+                .map((result, idx) => ({ result, item: items[idx] }))
+                .filter(({ result }) => !result.available)
+                .map(({ result, item }) => ({
+                    name: item.name,
+                    size: item.size,
+                    reason: result.message
+                }));
 
-            if (product.status !== "available") {
-                return res.status(400).json({
-                    message: `Product not available: ${item.name}`
-                });
-            }
+            return res.status(400).json({
+                message: "Some items are not available",
+                unavailableItems
+            });
         }
 
         // Save Order to DB
         const order = new Order({
             uid,
+            email: email,
             items,
             totalAmount,
             refundableDeposit,
             address,
             payment: { method: paymentMethod, status: "pending" },
             orderStatus: "placed",
-            placedAt: new Date(),
+            placedAt: new Date()
         });
 
         await order.save();
 
+        // Create bookings for each item
+        const bookings = [];
+        for (const item of items) {
+            // Validate dates
+            if (!item.rentalStartDate || !item.rentalEndDate) {
+                console.error(`Missing rental dates for item: ${item.name}`);
+                continue;
+            }
+
+            const booking = new Booking({
+                productId: item.productId,
+                size: item.size,
+                rentalStartDate: new Date(item.rentalStartDate),
+                rentalEndDate: new Date(item.rentalEndDate),
+                uid,
+                email: email,
+                orderId: order._id,
+                status: 'active'
+            });
+
+            await booking.save();
+            bookings.push(booking);
+        }
+
         // Push order into user's rentalHistory
-        await User.findOneAndUpdate(
+        const userUpdate = await User.findOneAndUpdate(
             { uid },
-            { $push: { rentalHistory: order._id } }
+            { $push: { rentalHistory: order._id } },
+            { new: true }
         );
+        
+        if (!userUpdate) {
+            console.warn(`User not found with uid: ${uid}, but order was created`);
+        } 
 
         res.status(201).json({
             message: "Order placed successfully",
             order,
+            bookings
         });
 
     } catch (err) {
-        console.error("Order error:", err);
+        console.error("Error message:", err.message);
+        console.error("Error stack:", err.stack);
         res.status(500).json({
             message: "Server error",
             error: err.message,
@@ -71,20 +123,10 @@ router.post("/place-order", async (req, res) => {
 });
 
 
-// router.post("/place-order", async (req, res) => {
-//     console.log("POST /place-order hit");
-//     console.log("Request body:", req.body);
-//     res.json({ order: true });
-// });
-
-
-
 // GET USER ORDERS
 router.get("/user-orders/:uid", async (req, res) => {
     try {
         const { uid } = req.params;
-
-        //console.log("UID received:", uid);
 
         const orders = await Order.find({ uid });
 
@@ -103,14 +145,19 @@ router.get("/user-orders/:uid", async (req, res) => {
 });
 
 
-
-//fetch current orders from db
+//fetch current order from db
 router.get("/curr-order/:uid", async (req, res) => {
     try {
         const { uid } = req.params;
-        //console.log("UID received:", uid);
 
         const order = await Order.findOne({ uid }).sort({ createdAt: -1 });
+
+        if (!order) {
+            return res.status(404).json({
+                success: false,
+                message: "No order found"
+            });
+        }
 
         res.json({
             success: true,
@@ -125,7 +172,6 @@ router.get("/curr-order/:uid", async (req, res) => {
         });
     }
 });
-
 
 
 module.exports = router;

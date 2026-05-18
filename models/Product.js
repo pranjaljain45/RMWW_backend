@@ -1,38 +1,23 @@
 const mongoose = require("mongoose");
 
-const productSchema = new mongoose.Schema(
-  {
-    _id: { type: String, required: true, unique: true }, // UUID allowed as product ID
-    name: { type: String, required: true },
-    price: { type: Number, required: true },
-    gender: String,
-    category: String,
-    subcategory: String,
-    imageUrl: String,
-    description: String,
-    stylistNotes: String,
-    materialCare: String,
-    size: String,
-    ownerName: String,
+const productSchema = new mongoose.Schema({
+  _id: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
+  price: { type: Number, required: true },
+  gender: String,
+  category: String,
+  subcategory: String,
+  imageUrl: { type: String, required: true },      // Cloudinary URL
+  public_id: { type: String, required: true },     // Cloudinary ID
+  description: String,
+  stylistNotes: String,
+  materialCare: String,
+  
+  // Deprecated: keeping for backward compatibility
+  size: String,
+});
 
+const Product = mongoose.model('Product', productSchema);
 
-    // Product status (dynamic)
-    status: {
-      type: String,
-      enum: ["available", "booked", "rented", "unavailable"],
-      default: "available"
-    },
+module.exports = Product;
 
-
-    //Track dates for rentals
-    rentedFrom: Date,
-    rentedTo: Date,
-  },
-  {
-    timestamps: true,
-    _id: false
-  }
-);
-
-module.exports =
-  mongoose.models.Product || mongoose.model("Product", productSchema);
